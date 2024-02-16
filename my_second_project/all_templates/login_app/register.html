@@ -1,0 +1,15 @@
+{% extends 'login_app/base.html' %}
+{% load static %}
+{% block body_block %}
+{% if registered %}
+<div class="alert alert-success">Successfully login</div>
+{% else %}
+<!-- using enctype for file upload -->
+<form enctype="multipart/form-data" method='POST'>
+    {{user_form.as_p}}
+    {{user_info_form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="Submit" />
+</form>
+{% endif %}
+{% endblock %}
